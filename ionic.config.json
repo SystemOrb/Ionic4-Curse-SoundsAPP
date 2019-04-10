@@ -1,0 +1,7 @@
+{
+  "name": "SoundsApp",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

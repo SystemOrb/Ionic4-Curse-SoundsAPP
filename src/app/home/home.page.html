@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>Sounds App</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-item-divider class="space-20"></ion-item-divider>
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-list reorder="true">
+        <ion-reorder-group>
+            <ion-item-sliding *ngFor="let animal of Animales; let x = index;">
+                <ion-item>
+                    <ion-avatar slot="start" class="hydrated">
+                        <img [src]="animal.imagen">
+                    </ion-avatar>
+                    <ion-label>{{animal.nombre}}</ion-label>
+                    <ion-reorder></ion-reorder>
+                </ion-item>
+                <ion-item-options side="end">
+                    <ion-item-option color="default">
+                        <ion-icon (click)="playSound(x);" *ngIf="!animal.reproduciendo" name="play"></ion-icon>
+                        <ion-icon (click)="StopAudio(x);" *ngIf="animal.reproduciendo" name="pause"></ion-icon>
+                    </ion-item-option>
+                    <ion-item-option color="danger">
+                        <ion-icon (click)="removeItem(x);" name="trash"></ion-icon>
+                    </ion-item-option>
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-reorder-group>
+    </ion-list>
+</ion-content>
